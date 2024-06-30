@@ -1,0 +1,24 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="https://covers.openlibrary.org/b/isbn/<%= data.isbn %>-L.jpg" class="d-block mx-lg-auto img-fluid" width="300" height="200">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><%= data.title %></h1>
+        <p class="lh-1 mb-3 text-muted mx-auto">Date: <%= data.date_read %> | Rate: <%= data.rate %> /10</p>
+        <p class="lead"><%= data.review %></p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button class="btn btn-success rounded-pill px-3" type="button"><a href="/edit/<%= data.id %>" style="color: white; text-decoration: none;">Edit</a></button>
+            
+            <form action="/delete" method="POST">
+              <input type="text" name="id" hidden value="<%= data.id %>">
+              <input class="btn btn-danger rounded-pill px-3" type="submit" name="delete" value="Delete" />
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%- include("partials/footer.ejs") %>

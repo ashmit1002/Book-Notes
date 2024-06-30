@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs") %>
+
+<div class="container my-5">
+    <div class="p-5 bg-body-tertiary rounded-3">
+      <h1 class="col-lg-8 text-body-emphasis mx-auto">Create</h1>
+      
+      <% if(locals.data){ %>
+        <form class="col-lg-8 text-body-emphasis mx-auto" action="/create" method="post">
+            <input class="d-flex mb-2" type="text" name="title" placeholder="Title" value="<%= data.title %>">
+            <input class="d-flex mb-2" type="number" name="rating" placeholder="Rating" value="<%= data.rate %>">
+            <input class="d-flex mb-2" type="text" name="isbn" placeholder="ISBN" value="<%= data.isbn %>">
+            <textarea class="d-flex mb-2" name="review" id="" cols="30" rows="10" placeholder="Review"><%= data.review %></textarea>
+            <input type="text" name="edit" hidden value="<%= data.id %>">
+            <input class="d-flex mb-2" type="submit" value="Ok">
+          </form>
+      <% } else{ %>
+        <form class="col-lg-8 text-body-emphasis mx-auto" action="/create" method="post">
+            <input class="d-flex mb-2" type="text" name="title" placeholder="Title">
+            <input class="d-flex mb-2" type="number" name="rating" placeholder="Rating">
+            <input class="d-flex mb-2" type="text" name="isbn" placeholder="ISBN">
+            <textarea class="d-flex mb-2" name="review" id="" cols="30" rows="10" placeholder="Review"></textarea>
+            <input class="d-flex mb-2" type="submit" value="Ok">
+          </form>
+      <% } %>
+    
+    </div>
+  </div>
+
+  <%- include("partials/footer.ejs") %>
